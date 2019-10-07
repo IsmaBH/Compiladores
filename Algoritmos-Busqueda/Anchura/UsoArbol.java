@@ -25,12 +25,6 @@ public class UsoArbol{
 		arbolAux = arbol.buscar(7);
 		arbolAux.inOrder();
 		System.out.println("");
-		//Verificamos que exista uno de los datos
-		boolean datoVerdadero = arbol.existe(8);
-		System.out.println("El valor de la variable datoVerdadero es: "+datoVerdadero);
-		//Verificamos que no exista un dato
-		boolean datoFalso = arbol.existe(10);
-		System.out.println("El valor de la variable datoFalso es :"+datoFalso);
 		//Ahora preguntamos la cantidad de nodos
 		Integer c = arbol.cantidad();
 		System.out.println("La cantidad de nodos es: "+c);

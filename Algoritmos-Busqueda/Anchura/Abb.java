@@ -16,11 +16,12 @@ public class Abb {
     public void Abb(){
         NodoArbol raiz = new NodoArbol();
     }
-    //Metodo para saber si un arbol esta vacio (Revisar la logica de este metodo)
+    //Metodo para saber si un arbol esta vacio
     public boolean esVacio(){
         return (raiz == null);
     }
-    //Metodo para insertar un nuevo nivel de nodos al arbol(Corregir este metodo)
+    //Metodo para insertar un nuevo nivel de nodos al arbol
+    //Este metodo cambiara segun las necesidades de la implementacion
     public void insertar(int a){
         if (esVacio()) {
             NodoArbol nuevo = new NodoArbol();
@@ -62,6 +63,7 @@ public class Abb {
         }
     }
     //Metodo de busqueda, este metodo es el que se modificara
+    //de acuerdo al algoritmo de busqueda que se este usando
     public Abb buscar(int a){
         Abb arbolito = null;
         if (!esVacio()) {
@@ -79,9 +81,9 @@ public class Abb {
         }
         return arbolito;
     }
-    //Metodo que verifica que exista un nodo determinado
+    //Metodo que verifica que exista un nodo determinado(Por revisar funcionamiento)
     public boolean existe(int a){
-    if (!esVacio()) {
+        if (!esVacio()) {
             if (a == raiz.dato) {
                 return true;
             }else {
