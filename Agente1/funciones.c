@@ -136,3 +136,35 @@ void Imprime_Matriz(int **matriz, int row, int col)
 		puts("\n");
 	}
 }
+int Sondea(int **matriz, int PS, int* x, int* y)
+{
+	int casilla;
+	casilla = matriz[x][y];
+	if (casilla != 77)
+	{
+		/* code */
+	}
+}
+void Recorrido(int op, int row, int col, int **matriz)
+{
+	int x = 0, y = 0;
+	int PS = 0;
+	switch (op)
+	{
+		case 1:
+			while(PS < 10)
+			{
+				PS = Sondea(matriz, PS, &x, &y);
+			}
+			break;
+		case 2:
+			//code
+			break;
+		case 3:
+			//code
+			break;
+		case 4:
+			//code
+			break;
+	}
+}
