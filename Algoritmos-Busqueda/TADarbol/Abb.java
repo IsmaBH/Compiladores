@@ -1,6 +1,5 @@
 public class Abb {
     private class NodoArbol {
-        private Integer nivel;
         private Abb hd;
         private Abb hi;
         private int dato;
