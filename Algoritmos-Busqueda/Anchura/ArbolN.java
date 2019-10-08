@@ -26,19 +26,30 @@ public class ArbolN{
 			}
 		}//Aqui termina el else
 	}//Aqui termina le metodo
-	//Metodo para recorrer los hijos del arbol
+	//Metodo para recorrer los hijos del arbol (Busqueda primero en profundidad)
 	public void recorrer(NodoNario raiz){
 		raiz.verInfo();
 		for (int i = 0; i < raiz.getHijos() ; i++ ) {
 			recorrer(raiz.hijos.get(i));
 		}
 	}
-	//Metodo de recorrimiento 2
+	//Metodo de recorrimiento 2 (Tambien profundidad pero desde lo particular)
 	public void recorrerHijosRaiz(NodoNario raiz){
 		for (int i = 0; i < raiz.getHijos() ; i++ ) {
 			recorrerHijosRaiz(raiz.hijos.get(i));
 		}
 		raiz.verInfo();
+	}
+	//Metodo de amplitud (En desarrollo)
+	public void recorrerAmplitud(NodoNario raiz, int altura){
+		raiz.verInfo();
+		for (int j = 0; j < altura ; j++ ) {
+			for (int i = 0; i < raiz.getHijos() ; i++ ) {
+				raiz.hijos.get(i).verInfo();
+				i = j;
+			}
+			recorrerAmplitud(raiz.hijos.get(j), altura-1);	
+		}
 	}
 	//Metodo que busca que exista un dato en el arbol
 	public boolean existe(NodoNario raiz, String buscar, boolean encontrado){
@@ -130,5 +141,4 @@ public class ArbolN{
 			borrarNodo(raiz.hijos.get(i), borrar, rama);
 		}
 	}
-
 }

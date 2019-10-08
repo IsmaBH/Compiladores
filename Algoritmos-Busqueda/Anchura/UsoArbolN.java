@@ -8,11 +8,16 @@ public class UsoArbolN{
 		arbol.insertar(raiz, "3", "0");
 		arbol.insertar(raiz, "4", "0");
 		arbol.insertar(raiz, "1.1", "1");
+		arbol.insertar(raiz, "1.2", "1");
 		arbol.insertar(raiz, "2.1", "2");
+		arbol.insertar(raiz, "2.2", "2");
 		arbol.insertar(raiz, "3.1", "3");
+		arbol.insertar(raiz, "3.2", "3");
 		arbol.insertar(raiz, "3.1.1", "3.1");
+		arbol.insertar(raiz, "3.1.2", "3.1");
 		arbol.insertar(raiz, "3.1.1.4", "3.1.1");
 		arbol.insertar(raiz, "1.1.1", "1.1");
+		arbol.insertar(raiz, "1.1.2", "1.1");
 		arbol.insertar(raiz, "1.1.1.2", "1.1.1");
 
 		arbol.recorrer(raiz);
@@ -23,8 +28,10 @@ public class UsoArbolN{
 		System.out.println("Nivel Elemento: "+arbol.nivelElemento(raiz,"1.1",0));
 		System.out.println("-------------------------");
 		arbol.borrarNodo(raiz,"4",true);
-		arbol.recorrer(raiz);
+		//arbol.recorrer(raiz);
 		System.out.println("---------------------------");
-		arbol.recorrerHijosRaiz(raiz);
+		//arbol.recorrerHijosRaiz(raiz);
+		System.out.println("---------------------------");
+		arbol.recorrerAmplitud(raiz,arbol.altura(raiz));
 	}
 }
