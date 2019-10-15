@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class ArbolN{
 	NodoNario raiz;
 	public ArbolN(){
@@ -41,15 +43,21 @@ public class ArbolN{
 		raiz.verInfo();
 	}
 	//Metodo de amplitud (En desarrollo)
-	public void recorrerAmplitud(NodoNario raiz, int altura){
-		raiz.verInfo();
-		for (int j = 0; j < altura ; j++ ) {
-			for (int i = 0; i < raiz.getHijos() ; i++ ) {
-				raiz.hijos.get(i).verInfo();
-				i = j;
+	public boolean recorrerAmplitud(NodoNario raiz, String c){
+		Queue<NodoNario> colaAuxiliar = new LinkedList<NodoNario>();
+		colaAuxiliar.add(raiz);
+		while(colaAuxiliar.size() != 0){
+			NodoNario nodo = colaAuxiliar.poll();
+			System.out.println("Valor: "+ nodo.dato);
+			if (nodo.getDato().equals(c)) {
+				return true;
+			}else{
+				for (int i = 0; i < nodo.getHijos() ; i++ ) {
+					colaAuxiliar.add(nodo.hijos.get(i));	
+				}
 			}
-			recorrerAmplitud(raiz.hijos.get(j), altura-1);	
 		}
+		return false;
 	}
 	//Metodo que busca que exista un dato en el arbol
 	public boolean existe(NodoNario raiz, String buscar, boolean encontrado){

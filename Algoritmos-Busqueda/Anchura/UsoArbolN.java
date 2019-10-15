@@ -30,8 +30,8 @@ public class UsoArbolN{
 		arbol.borrarNodo(raiz,"4",true);
 		//arbol.recorrer(raiz);
 		System.out.println("---------------------------");
-		//arbol.recorrerHijosRaiz(raiz);
+		arbol.recorrerHijosRaiz(raiz);
 		System.out.println("---------------------------");
-		arbol.recorrerAmplitud(raiz,arbol.altura(raiz));
+		arbol.recorrerAmplitud(raiz,"3.1.1.4");
 	}
 }
