@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class ArbolN{
 	NodoNario raiz;
 	public ArbolN(){
@@ -26,19 +28,36 @@ public class ArbolN{
 			}
 		}//Aqui termina el else
 	}//Aqui termina le metodo
-	//Metodo para recorrer los hijos del arbol
+	//Metodo para recorrer los hijos del arbol (Busqueda primero en profundidad)
 	public void recorrer(NodoNario raiz){
 		raiz.verInfo();
 		for (int i = 0; i < raiz.getHijos() ; i++ ) {
 			recorrer(raiz.hijos.get(i));
 		}
 	}
-	//Metodo de recorrimiento 2
+	//Metodo de recorrimiento 2 (Tambien profundidad pero desde lo particular)
 	public void recorrerHijosRaiz(NodoNario raiz){
 		for (int i = 0; i < raiz.getHijos() ; i++ ) {
 			recorrerHijosRaiz(raiz.hijos.get(i));
 		}
 		raiz.verInfo();
+	}
+	//Metodo de amplitud
+	public boolean recorrerAmplitud(NodoNario raiz, String c){
+		Queue<NodoNario> colaAuxiliar = new LinkedList<NodoNario>();
+		colaAuxiliar.add(raiz);
+		while(colaAuxiliar.size() != 0){
+			NodoNario nodo = colaAuxiliar.poll();
+			System.out.println("Valor: "+ nodo.dato);
+			if (nodo.getDato().equals(c)) {
+				return true;
+			}else{
+				for (int i = 0; i < nodo.getHijos() ; i++ ) {
+					colaAuxiliar.add(nodo.hijos.get(i));	
+				}
+			}
+		}
+		return false;
 	}
 	//Metodo que busca que exista un dato en el arbol
 	public boolean existe(NodoNario raiz, String buscar, boolean encontrado){
@@ -130,5 +149,4 @@ public class ArbolN{
 			borrarNodo(raiz.hijos.get(i), borrar, rama);
 		}
 	}
-
 }
