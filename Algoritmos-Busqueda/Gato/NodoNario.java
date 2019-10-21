@@ -1,15 +1,11 @@
 import java.util.*;
 public class NodoNario{
 	int cantidadH;
-	int[][] dato;
+	String dato;
 	ArrayList<NodoNario> hijos;
 	//Constructor de la clase
-	public NodoNario(){
-		hijos = new ArrayList<NodoNario>();
-		this.dato = new int[3][3];
-		this.cantidadH = 0;
-	}
-	public NodoNario(int[][] dato){
+	public NodoNario(){}
+	public NodoNario(String dato){
 		hijos = new ArrayList<NodoNario>();
 		this.dato = dato;
 		this.cantidadH = 0;
@@ -33,11 +29,11 @@ public class NodoNario{
 		System.out.println(cantidadH);
 	}
 	//Metodo que cambia el dato del nodo
-	public void setDato(int[][] dato){
+	public void setDato(String dato){
 		this.dato = dato;
 	}
 	//Metodo que obtiene el dato del nodo
-	public int[][] getDato(){
+	public String getDato(){
 		return dato;
 	}
 	//etodo que obtiene el numero de hijos

@@ -5,12 +5,12 @@ public class ArbolN{
 	public ArbolN(){
 		//Vacio
 	}
-	public NodoNario insertarRaiz(){
-		raiz = new NodoNario();
+	public NodoNario insertarRaiz(String dato){
+		raiz = new NodoNario(dato);
 		return raiz;
 	}
 	//Metodos para insertar un nodo al arbol
-	public void insertar(NodoNario nodo,int[][] dato, String padre){
+	public void insertar(NodoNario nodo,String dato, String padre){
 		NodoNario nuevo = new NodoNario(dato);
 		//Verificamos si el padre es la raiz
 		if (nodo.getDato().equals(padre)) {
