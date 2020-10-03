@@ -1,2 +1,2 @@
-# Inteligencia-Articificial
-Practicas de la materia de IA
+# Introducción a los compiladores
+Practicas introductorias a los compiladores
