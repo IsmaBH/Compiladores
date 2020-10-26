@@ -79,3 +79,59 @@ class AFN:
 		else:
 			datos_e = re.findall("\d+",estado)
 			self.finales.append(datos_e[0])
+	def esAFN(self):
+		#Metodo que verifica que el AF en memoria
+		#sea un AFN, si esto se cumple devuelve True
+		#de lo contrario devuelve False
+		epsilon = 'E'
+		contador = 0
+		for i in range(len(self.AF)):
+			if re.search(epsilon,self.AF[i]):
+				for j in range(len(self.AF)):
+					e = re.findall("\d+|\D+",self.AF[i])
+					simbolo = e[3].strip(', \n')
+					busqueda = e[0]+e[1]+str(j)+','+simbolo+'\n'
+					repeticiones = self.AF.count(busqueda)
+					if repeticiones >= 1:
+						contador = contador + 1
+				if contador >= 2:
+					return True
+		return False
+	def esAFD(self):
+		#Metodo que verifica que el AF en memoria
+		#sea un AFD, si esto se cumple devuelve True
+		#de lo contrario devuelve Flase
+		epsilon = 'E'
+		contador = 0
+		for i in range(len(self.AF)):
+			if re.search(epsilon,self.AF[i]):
+				for j in range(len(self.AF)):
+					e = re.findall("\d+|\D+",self.AF[i])
+					simbolo = e[3].strip(', \n')
+					busqueda = e[0]+e[1]+str(j)+','+simbolo+'\n'
+					repeticiones = self.AF.count(busqueda)
+					if repeticiones >= 1:
+						contador = contador + 1
+				if contador >= 2:
+					return False
+		return True
+	def acepta(self,cadena):
+		#Metodo que dado una cadena regresa un valor
+		#de True o False dependiendo de si es aceptada
+		#por el AF
+		caracteres = re.findall(r".",cadena)
+		for i in range(len(self.AF)):
+			e = re.findall("\d+|\D+",self.AF[i])
+			simbolo = e[3].strip(', \n')
+			if ((simbolo == caracteres[0]) or (simbolo == 'E')):
+				if self.finales.count(e[1]) == 1:
+					return True
+			else:
+				caracteres.pop(0)
+				if caracteres == []:
+					return False
+				continue
+	def generar_cadena(self):
+		#Metodo que regresa una cadena (String)
+		#formada por el AFN
+		pass
