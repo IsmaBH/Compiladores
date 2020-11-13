@@ -1,0 +1,81 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{listings}
+\begin{document}
+	\begin{titlepage}
+		\centering
+		{\bfseries\LARGE Instituto Politécnico Nacional \par}
+		\vspace{1cm}
+		{\scshape\Large Escuela Superior de Computo \par}
+		\vspace{1cm}
+		{\scshape\Large Ingeniería en Sistemas Computacionales(ISC) \par}
+		\vspace{3cm}
+		{\scshape\Huge Practica 4 \par}
+		\vspace{3cm}
+		{\itshape\Large Compiladores \par}
+		\vfill
+		{\Large Profesor: \par}
+		{\Large M. en C. Saucedo Delgado Rafael Norman \par}
+		\vspace{1cm}
+		{\Large Autor: \par}
+		{\Large Barón Hernández Diego Ismael \par}
+		{\Large 2015630044 \par}
+		\vfill
+		{\Large 3CV5 \par}
+	\end{titlepage}
+	\newpage
+	\tableofcontents
+	\newpage
+	\section{Introducción}
+		Para este proyecto se pretende hacer un compilador de lenguaje C a ensamblador con la ayuda de la herramienta flex para la parte del analizador lexico del lenguaje C, se desarrollara en el sistema operativo UNIX/Ubuntu 20.04 con la versión 2.6.4 de flex.
+	\section{Desarrollo}
+		\subsection{Ejemplos del lenguaje}
+			A continuación se mostraran ejemplos de programas escritos en lenguaje C, estos son sencillos y demostrativos.\\
+			El primer ejemplo que tenemos es el de main que es la función principal, dentro de esta se pone todo lo que se pretende ejecutar, es de tipo int ya que regresa un valor entero que hacer referencia al código de estado en el que termino la ejecución del programa y tiene un void en los parámetros para indicar que no es necesario que reciba algún dato para su funcionamiento.
+			\lstinputlisting{../main.c}
+			Ahora si vemos dentro del ejemplo anterior podemos ver otro elemento importante como lo son las llamadas a funciones, en este caso estamos usando la llamada al analizador léxico generado por flex.
+			Otro elemento importante son los ciclos y condicionales, a continuación se muestran ejemplos de estos:
+			\lstinputlisting{../ciclos.c}
+			Otra cosa importante a destacar de este ejemplo es la declaración de variables, en este caso fue una variable de tipo int llamada i que utilizamos en el ciclo for, luego volvemos a usar en el if con el operador modulo para comprobar si el valor actual de i es par y si lo es usamos la función printf.
+		\newpage
+		\subsection{Clases Léxicas}
+			Ahora bien al observar los ejemplos podemos empezar a darnos cuenta de algunas clases léxicas como son:
+			\begin{itemize}
+				\item Identificadores (funciones,nombres de variables, etc.)
+				\item Secuencias de escape (return, break, continue, etc.)
+				\item Constantes numéricas (enteros,flotantes)
+				\item Constantes alfabéticas (char)
+				\item Ciclos(for,while,do while)
+				\item Control de flujos(if,if else)
+				\item Operadores(lógicos y numéricos)
+			\end{itemize}
+			A grandes rasgos tenemos estas clases léxicas pero para un desarrollo posterior nos facilitara identificar los componentes de estas clases por separado, esto lo mostraremos mas adelante en el código LEX.
+		\subsection{Expresiones regulares}
+			Para la identificación de algunos elementos se utilizaran las siguientes expresiones regulares:
+			\begin{itemize}
+				\item D [0-9]
+				\item L [a-zA-Z]
+				\item H [a-fA-F0-9]
+				\item E [Ee][+-]?{D}+
+				\item FS (f|F|l|L)
+				\item IS (u|U|l|L)*
+			\end{itemize}
+		\subsection{Código LEX}
+			A continuación se muestra el código en flex para lo anterior:
+			\lstinputlisting{../lexico.l}
+		\subsection{Pruebas}
+			Ahora veremos algunas pruebas del funcionamiento de este programa ya compilado, durante las pruebas se puso el ejemplo anterior en el que se verificaba si el valor de i es par a lo largo de un ciclo for, estos fueron los resultados:
+			\begin{figure}[h]
+				\centering
+				\includegraphics[scale=0.5]{/home/diego/Imágenes/Practica4_Compiladores/prueba1.png}
+				\caption{Primera prueba del analizador léxico}
+			\end{figure}
+			\\Podemos observar que los resultados mostrados en consola son correctos con respecto a las entradas del programa, identifica correctamente los elementos de las sentencias, hay que señalar que los espacios en blanco y otros elementos de formato los omite.
+	\section{Conclusiones}
+		Obtuve un refresco de lo que es la programación en C lo cual me vino bastante bien ya que tiene mucho tiempo que no programo en este lenguaje, dentro de las dudas que me quedaron fueron dentro de las expresiones regulares las de E,FS,IS por mas que busque no logre encontrar a que se referían esas abreviaciones, también en la subclase IDENTIFIER en el original utilizaban una función llamada checktype esta todavía no estaba completa, por lo que intente completarla y me quedo la duda de como haría esta para identificar el tipo de la entrada.
+	\section{Referencias}
+	Kernighan, Brian; Ritchie, Dennis M. (Marzo de 1988). The C Programming Language (2nd edición). Englewood Cliffs, NJ: Prentice Hall. ISBN 0-13-110362-8.\\
+	Copyright (C) 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2012 The Flex
+	Project.
+	
+\end{document} 

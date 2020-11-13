@@ -1,0 +1,8 @@
+%{
+#include <stdio.h>
+%}
+/*Una expresion por cada categoria lexica*/
+/*
+  1.- Lenguaje seleccionado: Lenguaje C
+  Practica 4:
+*/
